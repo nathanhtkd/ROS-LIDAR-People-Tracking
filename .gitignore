@@ -1,0 +1,57 @@
+# Ignore build and log directories
+build/
+install/
+log/
+
+# Ignore package-specific build directories
+**/build/
+**/install/
+**/logs/
+
+# Ignore all __pycache__ directories
+**/__pycache__/
+
+# Ignore Python byte-compiled files
+*.pyc
+*.pyo
+
+# Ignore IDE and editor files
+*.swp
+*~
+.project
+.idea
+*.code-workspace
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Ignore OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Ignore user-specific files
+*.user
+*.patch
+
+# Ignore generated dynamic_reconfigure files
+cfg/cpp/
+cfg/*.py
+
+# Ignore node_modules directories from web-based packages
+**/node_modules/
+
+# Ignore files related to ROS2 build system
+build_isolated/
+install_isolated/
+src/COLCON_IGNORE
+*__pycache__*
+
+# Ignore Eclipse project files
+.buildpath
+.project
+.settings/

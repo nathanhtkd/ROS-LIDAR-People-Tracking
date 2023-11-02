@@ -18,6 +18,7 @@ class PersonCount(Node):
       Int64, '/person_count', 10
     )
     self.unique_people_count = 0
+    self.get_logger().info('Person Count Node created -> subscribing to /clustered_points -> publishing to /person_count')
 
 def main(args=None):
   rclpy.init(args=args)

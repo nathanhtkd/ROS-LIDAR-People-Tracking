@@ -21,7 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
             'lidar_processor = lidar_listener.lidar_processor:main',
-            'point_cluster = lidar_listener.point_cluster:main'
+            'point_cluster = lidar_listener.point_cluster:main',
+            'person_tracker = lidar_listener.person_tracker:main'
         ],
     },
 )

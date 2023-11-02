@@ -4,7 +4,7 @@ from rclpy.node import Node
 from sensor_msgs.msg import LaserScan, PointCloud
 from geometry_msgs.msg import Point32
 
-msgCount = 0
+# msgCount = 0
 
 '''
   LidarPreprocessor class definition
@@ -27,18 +27,10 @@ class LidarPreprocessor(Node):
             LaserScan, '/scan', self.lidar_callback, 10)
         self.publisher = self.create_publisher(
             PointCloud, '/lidar_to_point_cloud', 10)
+        self.get_logger().info('Lidar Preprocessor Node created -> subscribing to /scan and publishing to /lidar_to_point_cloud')
 
     def lidar_callback(self, msg):
-        global msgCount
-        """
-        Converts a laser scan into a point cloud
-
-        Args:
-        - scan: Laser scan data
-
-        Returns:
-        - PointCloud: The converted point cloud
-        """
+        # global msgCount
 
         # list to hold points in the point cloud
         points = []
@@ -60,8 +52,8 @@ class LidarPreprocessor(Node):
         cloud = PointCloud()
         cloud.header = msg.header
         cloud.points = points
-        self.get_logger().info(
-            f'Received scan and translated! {msgCount} iterations!')
+        # self.get_logger().info(
+        #     f'Received scan and translated! {msgCount} iterations!')
         # Publish the processed msg
         self.publisher.publish(cloud)
         msgCount += 1

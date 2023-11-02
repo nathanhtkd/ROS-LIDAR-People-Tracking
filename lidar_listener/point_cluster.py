@@ -16,7 +16,7 @@ class PointCluster(Node):
     self.publisher = self.create_publisher(
       PointCloud, '/clustered_points', 10
     )
-    self.get_logger().info('Point Cluster Node created -> subscribing to /lidar_to_point_cloud -> publishing to /clustered_points')
+    self.get_logger().info('Point Cluster Node created')
 
   def publish_point_cloud(self, points, msg):
       # Create a PointCloud message
@@ -49,7 +49,7 @@ class PointCluster(Node):
       clustering = DBSCAN(eps=0.5, min_samples=5).fit(points_np)
       labels = clustering.labels_
       n_clusters = len(set(labels)) - (1 if -1 in labels else 0)  # '-1' represents noise in DBSCAN
-      max_clusters = max(max_clusters, n_clusters)
+      # max_clusters = max(max_clusters, n_clusters)
 
       # Initialize an array to hold the centroid points
       centroids = []
@@ -62,7 +62,7 @@ class PointCluster(Node):
           centroid = np.mean(cluster_points, axis=0)
           centroids.append(centroid)
           # DEBUG: check centroid calcluation points
-          self.get_logger().info(f'Cluster {label} centroid: {centroid}')
+          # self.get_logger().info(f'Cluster {label} centroid: {centroid}')
 
       # Create a new PointCloud message for the centroids
       centroid_cloud = PointCloud()

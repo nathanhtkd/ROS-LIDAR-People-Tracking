@@ -27,7 +27,7 @@ class LidarPreprocessor(Node):
             LaserScan, '/scan', self.lidar_callback, 10)
         self.publisher = self.create_publisher(
             PointCloud, '/lidar_to_point_cloud', 10)
-        self.get_logger().info('Lidar Preprocessor Node created -> subscribing to /scan and publishing to /lidar_to_point_cloud')
+        self.get_logger().info('Lidar Preprocessor Node created')
 
     def lidar_callback(self, msg):
         # global msgCount
@@ -56,7 +56,7 @@ class LidarPreprocessor(Node):
         #     f'Received scan and translated! {msgCount} iterations!')
         # Publish the processed msg
         self.publisher.publish(cloud)
-        msgCount += 1
+        # msgCount += 1
 
 
 def main(args=None):
